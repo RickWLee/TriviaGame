@@ -1,0 +1,14 @@
+header {
+	 
+    font-weight: bolder;
+    font-size: 88px;
+    text-align: center;
+    color: yellow;
+
+}
+
+
+.bgimage{
+    background-image: url(../images/bg.jpg);
+    height: 900px;
+}
