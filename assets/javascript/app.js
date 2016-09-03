@@ -54,31 +54,21 @@ $( document ).ready(function() {
 
 // Asking question with list of choices
 
+// $('#correct, #incorrect').hide();
+// $('#results').hide();
+
+
+
+	$('#quiz').hide();
+	$('#start').on('click', start);
+
 	Ask();
 
-// User will select the choice and the answer will be compared with correct answer
 
-	function SelectAns(){
-		$(".choice_ans").click("click",function() {
-
-		 	var result=$(this).data('select');
-
-		 	if (QnA[currentQindex].answer==result){
-		 		guessCorrect++;
-		 		console.log('Correct guess = '+ guessCorrect);
-		 		currentQindex++;
-		 	} else {
-		 		guessWrong++;
-		 		console.log('Incorrect guess = ' +guessWrong);
-				currentQindex++;
-		 	}
-
-		
-		console.log(currentQindex);
-
-		});
-
-	}
+	function start() {
+    	$('#start').hide();
+    	$('#quiz').show();
+		}
 
 	function Ask(){
 
@@ -96,8 +86,34 @@ $( document ).ready(function() {
 
 			SelectAns();
 
-
 		}
+
+// User will select the choice and the answer will be compared with correct answer
+
+	function SelectAns(){
+		$(".choice_ans").click("click",function() {
+
+		 	var result=$(this).data('select');
+
+		 	if (QnA[currentQindex].answer==result){
+		 		guessCorrect++;
+		 		console.log('Correct guess = '+ guessCorrect);
+		 		currentQindex++;
+		 		
+		 	} else {
+		 		guessWrong++;
+		 		console.log('Incorrect guess = ' +guessWrong);
+				currentQindex++;
+		 	}
+
+		console.log(currentQindex);
+
+		});
+
+	}
+
+
+
 
 
 
