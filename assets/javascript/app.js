@@ -1,59 +1,84 @@
 $( document ).ready(function() {
 
 	var QnA= [
-		{Q:"Star War is belong to who now?", answer: "Disney", choices: ["Micky Mouse","Disney","John Smith","George Lucus"]},
-		{Q:"The singer of 'Eye of the Storm", answer:"Ryan Stevenson",choices: ["Ryan Stevenson","Disney","John Smith","George Lucus"]},
-		{Q:"Who is the first officer for Captian Kirk?", answer: "Mr. Spock",choices: ["Ryan Stevenson","Disney","John Smith","Mr. Spock"]},
+		{Q:"Star War is belong to who now?", 
+		answer: "Disney", 
+		choices: [
+					"Micky Mouse",
+					"Disney",
+					"John Smith",
+					"George Lucus"
+					]
+		},
+
+		{Q:"The singer of 'Eye of the Storm?", 
+		answer:"Ryan Stevenson",
+		choices: [
+					"Ryan Stevenson",
+					"Disney",
+					"John Smith",
+					"George Lucus"]
+		},
+
+		{Q:"Who is the first officer for Captian Kirk?", 
+		answer: "Mr. Spock",
+		choices: [
+				"Ryan Stevenson",
+				"Disney",
+				"John Smith",
+				"Mr. Spock"
+				]
+		},
+		{Q:"Who created internet?", 
+		answer: "Mr. Spock",
+		choices: [
+				"Ryan Stevenson",
+				"Disney",
+				"John Smith",
+				"Mr. Spock"
+				]
+		},
+
+
+
 	];
 
 
-	// for (var i=0; i< QnA.length; i++) {
+	
 	var i = 0;
+	var j = 0;
+	var currentTimer=0;
+	var currentQindex=0;
+	var correctGuess=0;
+	var IncorrectGuess=0;
 
-
+/
 
 		function Ask(){
+
+			$("#TQ").css({"color":"orange","font-size": "40px"});
 			$("#TQ").append((QnA[i].Q));
+
+			for (var j=0; j<QnA[currentQindex].choices.length; j++) {
+			var choiceDiv = $('<div>');
+			choiceDiv.addClass('choice_ans')
+			choiceDiv.text(QnA[currentQindex].choices[j]);
+			choiceDiv.attr("data-select", QnA[currentQindex].choices[j]);
+			console.log(QnA[currentQindex].choices[j]);
+			$("#Choices").append(choiceDiv);
+
+
 			}
+		}
 
 		Ask();
 
-
-
 		
 
-	for (j=0; j<4;j++) {
-		// console.log(QnA[i].choices[j]);
-		function Mchoices(){
-			$("#Choices").append((QnA[i].choices[j]));
-		}
+		$(".choice_ans").on("click",function() {
 
-		Mchoices();
-
-
-		};
-
-
-	// };
-
-
-
-
-
-	// };
-
-
-	// function
-	// function Ask(){
-	// 	console.log(QnA[0].Q);
-
-	
-	// 	}
-
-	// 	var x=Ask();
-	
-
-	// Click Start to start the game
+	 			console.log(this);
+		});
 	
 
 	// For loop the questions until the questions are ended.
