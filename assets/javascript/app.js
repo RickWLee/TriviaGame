@@ -58,30 +58,32 @@ $( document ).ready(function() {
 
 // User will select the choice and the answer will be compared with correct answer
 
-	$(".choice_ans").click("click",function() {
+	function SelectAns(){
+		$(".choice_ans").click("click",function() {
 
-	 	var result=$(this).data('select');
+		 	var result=$(this).data('select');
 
-	 	if (QnA[currentQindex].answer==result){
-	 		guessCorrect++;
-	 		console.log('Correct guess = '+ guessCorrect);
+		 	if (QnA[currentQindex].answer==result){
+		 		guessCorrect++;
+		 		console.log('Correct guess = '+ guessCorrect);
+		 		currentQindex++;
+		 	} else {
+		 		guessWrong++;
+		 		console.log('Incorrect guess = ' +guessWrong);
+				currentQindex++;
+		 	}
 
-	 	} else {
-	 		guessWrong++;
-	 		console.log('Incorrect guess = ' +guessWrong);
-
-	 	}
-
-	 	
+		
+		console.log(currentQindex);
 
 		});
 
-
+	}
 
 	function Ask(){
 
 			// $("#TQ").css({"color":"orange","font-size": "40px"});
-			$("#TQ").append((QnA[i].Q));
+			$("#TQ").append((QnA[currentQindex].Q));
 
 			for (var j=0; j<QnA[currentQindex].choices.length; j++) {
 			var choiceDiv = $('<div>');
@@ -90,9 +92,11 @@ $( document ).ready(function() {
 			choiceDiv.attr("data-select", QnA[currentQindex].choices[j]);
 			// console.log(QnA[currentQindex].choices[j]);
 			$("#Choices").append(choiceDiv);
-
-
 			}
+
+			SelectAns();
+
+
 		}
 
 
