@@ -49,14 +49,38 @@ $( document ).ready(function() {
 	var j = 0;
 	var currentTimer=0;
 	var currentQindex=0;
-	var correctGuess=0;
-	var IncorrectGuess=0;
+	var guessCorrect=0;
+	var guessWrong=0;
 
-/
+// Asking question with list of choices
 
-		function Ask(){
+	Ask();
 
-			$("#TQ").css({"color":"orange","font-size": "40px"});
+// User will select the choice and the answer will be compared with correct answer
+
+	$(".choice_ans").click("click",function() {
+
+	 	var result=$(this).data('select');
+
+	 	if (QnA[currentQindex].answer==result){
+	 		guessCorrect++;
+	 		console.log('Correct guess = '+ guessCorrect);
+
+	 	} else {
+	 		guessWrong++;
+	 		console.log('Incorrect guess = ' +guessWrong);
+
+	 	}
+
+	 	
+
+		});
+
+
+
+	function Ask(){
+
+			// $("#TQ").css({"color":"orange","font-size": "40px"});
 			$("#TQ").append((QnA[i].Q));
 
 			for (var j=0; j<QnA[currentQindex].choices.length; j++) {
@@ -64,22 +88,15 @@ $( document ).ready(function() {
 			choiceDiv.addClass('choice_ans')
 			choiceDiv.text(QnA[currentQindex].choices[j]);
 			choiceDiv.attr("data-select", QnA[currentQindex].choices[j]);
-			console.log(QnA[currentQindex].choices[j]);
+			// console.log(QnA[currentQindex].choices[j]);
 			$("#Choices").append(choiceDiv);
 
 
 			}
 		}
 
-		Ask();
 
-		
 
-		$(".choice_ans").on("click",function() {
-
-	 			console.log(this);
-		});
-	
 
 	// For loop the questions until the questions are ended.
 
